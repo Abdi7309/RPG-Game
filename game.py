@@ -56,11 +56,6 @@ def help_menu():
     print('- Good luck and have fun!')
     title_screen_selections()
 
-#### GAME FUNCTIONALITY ###
-def start_game():
-    print('hallo')
-
-
 
 ### MAP ###
 
@@ -255,5 +250,58 @@ zonemap = {
 
 
 }
+
+##### GAME_INTERACTIVITY #####
+def print_location():
+    print('\n' + ('#' * (4 + len (myPlayer. location))))
+    print('#' + myPlayer. location.upper() + '#')
+    print('#' + zonemap[myPlayer.position] [DESCRIPTION] + '#')
+    print('\n' + ('#' * (4 + len(myPlayer. location))))
+
+def prompt():
+    print("\n" + "================================")
+    print("what would you like to do?")
+    action = input ("> ")
+    acceptable_actions = ['move', 'go', 'travel', 'walk', 'quit', 'examine', 'inspect', 'interact', 'look']
+    while action.lower() not in acceptable_actions:
+        print ("Unknown action, try again.\n")
+        action = input ("> ")
+if action.lower() == 'quit':
+    sys.exit ()
+elif action.lower() in ['move' , 'go', 'travel', 'walk']:
+    player_move(action.lower())
+elif action.lower() in ['examine', 'inspect', 'interact', 'look']:
+    player_examine(action. lower ())
+
+def player_move(myAction):
+    ask = "Where would you like to move to?\n"
+    dest = input (ask)
+    if dest in ['up''north']:
+        destination = zonemap[myPlayer.location] [UP] 
+        movement_handler()
+    elif dest in ['left', 'west']:
+        destination = zonemap[myPlayer.location] [LEFT] 
+        movement_handler()
+    elif dest in ['east', 'right']:
+        destination = zonemap[myPlayer.location] [RIGHT] 
+        movement_handler()
+    elif dest in ['south', 'down']:
+        destination = zonemap[myPlayer.location] [DOWN] 
+        movement_handler()
+    
+def movement_handler(destination):
+    print("\n" + "You have moved to the " + destination + ".")
+    myPlayer.location = destination
+    print_location()
+    
+def player_examine(action):
+    if zonemap[myPlayer.location] [SOLVED]:
+        print("You have already exhausted this zone.")
+    else:
+        print("You can trigger a puzzle here")
+
+##### GAME FUNCTIONALITY #####
+def start_game():
+    return
 
 
