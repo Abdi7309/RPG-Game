@@ -11,6 +11,7 @@ screen_width = 100
 class player:
     def init_ (self):
         self.name = ''
+        self.job = ''
         self.hp = 0
         self.mp = 0
         self.status_effects = []
@@ -303,5 +304,32 @@ def player_examine(action):
 ##### GAME FUNCTIONALITY #####
 def start_game():
     return
+### NAME COLLECTING
+def setup_game():
+    os.system('clear')
+
+    question1 = "Hello what's your name\n"
+    for character in question1:
+        sys.stdout.write(character)
+        sys.stdout. flush()
+        time.sleep(0.05)
+    player_name = input ("> ")
+    myPlayer.name = player_name
+
+    question2 = "Hello, what role do you want to play?\n"
+    question2added = "(You can play as a warrior, priest, or mage) n"
+    for character in question2:
+        sys.stdout.write(character)
+        sys.stdout. flush()
+        time. sleep (0.05)
+    for character in question2added: 
+        sys.stdout.write (character)
+        sys.stdout. flush()
+        time. sleep (0.01)
+    player_job = input("> ")
+    valid_jobs = ['warrior''mage''priest']
+
+myPlayer.job = player_job
+
 
 
